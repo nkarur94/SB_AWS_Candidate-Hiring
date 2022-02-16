@@ -11,7 +11,9 @@ import javax.persistence.Table;
 import com.candidate_hiring.DTO.CandidateHiringDetailsDTO;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @Data
 @Entity
 @Table(name="candidate_hiring")
@@ -20,9 +22,10 @@ public class CandidateHiringDetailsEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long CHId;
+	
 	private String firstName;
 	private String middelName;
-	private String lastname;
+	private String lastName;
 	private String eMail;
 	private String mobileNo;
 	private String hiredCity;
@@ -34,7 +37,7 @@ public class CandidateHiringDetailsEntity {
 	private String knowledgeRemark;
 	private String onboardStatus;
 	private String status;
-	private String creatorUser;
+	private Long creatorUser;
 	private LocalDate joindate;
 	private String location;
 	private double aggrPer;
@@ -45,7 +48,7 @@ public class CandidateHiringDetailsEntity {
 		super();
 		this.firstName = detailsDto.firstName;
 		this.middelName = detailsDto.middelName;
-		this.lastname = detailsDto.lastname;
+		this.lastName = detailsDto.lastName;
 		this.eMail =detailsDto.eMail;
 		this.mobileNo = detailsDto.mobileNo;
 		this.hiredCity = detailsDto.hiredCity;
@@ -57,7 +60,6 @@ public class CandidateHiringDetailsEntity {
 		this.knowledgeRemark = detailsDto.knowledgeRemark;
 		this.onboardStatus = detailsDto.onboardStatus;
 		this.status = detailsDto.status;
-		this.creatorUser = detailsDto.creatorUser;
 		this.joindate = detailsDto.joindate;
 		this.location = detailsDto.location;
 		this.aggrPer = detailsDto.aggrPer;
