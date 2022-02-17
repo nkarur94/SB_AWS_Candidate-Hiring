@@ -14,4 +14,8 @@ public interface ICandidateHiringService {
 	public ResponseDTO deleteCandidate(String token, Long CHId);
 	
 	public ResponseDTO updateOnboardingStatus(String token, Long CHId, String onboardingStatus);
+	public ResponseDTO getCandidateStatusAsActive(String token, String status);
+	public ResponseDTO getCandidateStatusCount(String token, String status);
+	
+	
 }

@@ -4,6 +4,9 @@ import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import lombok.Data;
+
+@Data
 public class CandidateHiringDetailsDTO {
 	
 	public String firstName;

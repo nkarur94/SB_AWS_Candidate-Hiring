@@ -215,4 +215,69 @@ public class CandidateHiringService implements ICandidateHiringService {
 
 	}
 
+	@Override
+	public ResponseDTO getCandidateStatusAsActive(String token, String status) {
+		// TODO Auto-generated method stub
+		String urlForComfirming = "http://localhost:8085/admin/adminpresentornot/" + token;
+		boolean presentOrNot = restTemplate.getForObject(urlForComfirming, boolean.class);
+
+		if (presentOrNot != true) {
+			throw new CandidateHiringCustomException("Admin  not found");
+		} else {
+
+			String urlForverifying = "http://localhost:8085/admin/verifiedOrNot/" + token;
+			boolean verifiedOrNot = restTemplate.getForObject(urlForverifying, boolean.class);
+
+			if (verifiedOrNot != true) {
+				throw new CandidateHiringCustomException("Admin not verified");
+
+			} else {
+
+				List<CandidateHiringDetailsEntity> entity = repoForHire
+						.findByStatusCandidateHiringDetailsEntities(status);
+				if (entity == null) {
+					ResponseDTO response = new ResponseDTO("no " + status + " candidate available ");
+					return response;
+				} else {
+					ResponseDTO response = new ResponseDTO("candidate details of status::", entity);
+					return response;
+				}
+
+			}
+
+		}
+
+	}
+
+	@Override
+	public ResponseDTO getCandidateStatusCount(String token, String status) {
+		// TODO Auto-generated method stub
+		String urlForComfirming = "http://localhost:8085/admin/adminpresentornot/" + token;
+		boolean presentOrNot = restTemplate.getForObject(urlForComfirming, boolean.class);
+
+		if (presentOrNot != true) {
+			throw new CandidateHiringCustomException("Admin  not found");
+		} else {
+
+			String urlForverifying = "http://localhost:8085/admin/verifiedOrNot/" + token;
+			boolean verifiedOrNot = restTemplate.getForObject(urlForverifying, boolean.class);
+
+			if (verifiedOrNot != true) {
+				throw new CandidateHiringCustomException("Admin not verified");
+
+			} else {
+					int count = repoForHire.noOfCountForStatusPresent(status);
+					if(count == 0) {
+						ResponseDTO response = new ResponseDTO("no " + status + " candidate available ");
+						return response;
+					}else {
+						ResponseDTO response = new ResponseDTO("number of " + status + " candidate available are:: "+count);
+						return response;
+					}
+					
+			}
+		}
+		
+	}
+
 }

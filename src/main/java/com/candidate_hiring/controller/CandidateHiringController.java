@@ -65,5 +65,22 @@ public class CandidateHiringController {
 		return new ResponseEntity<ResponseDTO>(response,HttpStatus.OK);
 	}
 	
+	@GetMapping("/getallstatusactive/{status}")
+	public ResponseEntity<ResponseDTO> getAllStatusActive(@RequestHeader String token,@PathVariable String status){
+		ResponseDTO response = iCandidateService.getCandidateStatusAsActive(token, status);
+		return new  ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+	}
+	
+	@GetMapping("/getcount/{status}")
+	public ResponseEntity<ResponseDTO> getCount(@RequestHeader String token, @PathVariable String status){
+		ResponseDTO response = iCandidateService.getCandidateStatusCount(token, status);
+		return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+		
+	}
+	
+	
+
+	
+	
 
 }
