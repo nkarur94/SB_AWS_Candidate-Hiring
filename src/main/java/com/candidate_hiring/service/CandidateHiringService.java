@@ -35,6 +35,7 @@ public class CandidateHiringService implements ICandidateHiringService {
 			String urlForverifying = "http://localhost:8085/admin/verifiedOrNot/" + token;
 			boolean verifiedOrNot = restTemplate.getForObject(urlForverifying, boolean.class);
 			System.out.println(verifiedOrNot);
+			
 			if (verifiedOrNot != true) {
 				throw new CandidateHiringCustomException("admin not verified");
 
