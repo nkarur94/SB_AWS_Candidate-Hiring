@@ -204,9 +204,15 @@ public class CandidateHiringService implements ICandidateHiringService {
 			} else {
 				CandidateHiringDetailsEntity entity = repoForHire.findById(CHId)
 						.orElseThrow(() -> new CandidateHiringCustomException("candidate id not found"));
+				
 				entity.setOnboardStatus(onboardingStatus);
 				repoForHire.save(entity);
+				
+				String body="Dear candidate your onboarding status has been changed to "+onboardingStatus;
+				String urlToSendEMail = "http://localhost:8085/admin/sendemail/"+entity.getEMail()+"/"+onboardingStatus+"/"+body;
+				restTemplate.getForObject(urlToSendEMail, void.class);
 
+				
 				ResponseDTO response = new ResponseDTO(
 						"successfully updated onbording status of candidate:" + entity.getFirstName());
 				return response;

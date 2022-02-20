@@ -1,5 +1,7 @@
 package com.candidate_hiring.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,14 +28,14 @@ public class CandidateHiringController {
 	ICandidateHiringService iCandidateService;
 	
 	@PostMapping("/add")
-	public ResponseEntity<ResponseDTO> addCandidate(@RequestHeader String token, @RequestBody CandidateHiringDetailsDTO detailsDTO){
+	public ResponseEntity<ResponseDTO> addCandidate(@RequestHeader String token, @Valid @RequestBody CandidateHiringDetailsDTO detailsDTO){
 		ResponseDTO response = iCandidateService.addDetailsOfCandidate(token, detailsDTO);
 		return new ResponseEntity<ResponseDTO>(response,HttpStatus.OK);
 		
 	}
 	
 	@PutMapping("/update/{CHId}")
-	public ResponseEntity<ResponseDTO> updateCandidateH(@RequestHeader String token, @PathVariable Long CHId, @RequestBody CandidateHiringDetailsDTO detailsDTO){
+	public ResponseEntity<ResponseDTO> updateCandidateH(@RequestHeader String token, @PathVariable Long CHId, @Valid @RequestBody CandidateHiringDetailsDTO detailsDTO){
 		ResponseDTO response = iCandidateService.updateDetailsOfCandidateHiring(token, CHId, detailsDTO);
 		return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
 	}
@@ -60,8 +62,8 @@ public class CandidateHiringController {
 	}
 	
 	@PutMapping("/updateonboarding/{CHId}")
-	public ResponseEntity<ResponseDTO> updateOnborading(@RequestHeader String token,@PathVariable Long CHId, @RequestParam(value="status") String onboardinStatus){
-		ResponseDTO response = iCandidateService.updateOnboardingStatus(token, CHId, onboardinStatus);
+	public ResponseEntity<ResponseDTO> updateOnborading(@RequestHeader String token,@PathVariable Long CHId, @RequestParam(value="status") String onboardingStatus){
+		ResponseDTO response = iCandidateService.updateOnboardingStatus(token, CHId, onboardingStatus);
 		return new ResponseEntity<ResponseDTO>(response,HttpStatus.OK);
 	}
 	

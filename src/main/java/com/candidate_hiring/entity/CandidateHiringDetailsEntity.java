@@ -41,8 +41,8 @@ public class CandidateHiringDetailsEntity {
 	private LocalDate joindate;
 	private String location;
 	private double aggrPer;
-	private int currentPinCode;
-	private int permanentPinCode;
+	private String currentPinCode;
+	private String permanentPinCode;
 	
 	public CandidateHiringDetailsEntity(CandidateHiringDetailsDTO detailsDto) {
 		super();
