@@ -29,7 +29,7 @@ public class CandidateHiringDetailsEntity {
 	private String eMail;
 	private String mobileNo;
 	private String hiredCity;
-	private LocalDate hiredDate;
+	private String hiredDate;
 	private String degree;
 	private String hiredlab;
 	private String attitudeRemark;
@@ -38,7 +38,7 @@ public class CandidateHiringDetailsEntity {
 	private String onboardStatus;
 	private String status;
 	private Long creatorUser;
-	private LocalDate joindate;
+	private String joindate;
 	private String location;
 	private double aggrPer;
 	private String currentPinCode;

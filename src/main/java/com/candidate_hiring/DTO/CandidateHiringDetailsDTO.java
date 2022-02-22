@@ -28,7 +28,7 @@ public class CandidateHiringDetailsDTO {
 	public String hiredCity;
 	
 	@JsonFormat(pattern = "dd MM yyyy")
-	public LocalDate hiredDate;
+	public String hiredDate;
 	public String degree;
 	public String hiredlab;
 	public String attitudeRemark;
@@ -41,7 +41,7 @@ public class CandidateHiringDetailsDTO {
 	public String status;
 
 	@JsonFormat(pattern = "dd MM yyyy")
-	public LocalDate joindate;
+	public String joindate;
 	public String location;
 	public double aggrPer;
 	
